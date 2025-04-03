@@ -1,6 +1,7 @@
 //Recupero elementi dal DOM
 const emailList = document.getElementById('email-list')
 
+
 //Generate email address Function
 const generateEmail = (num) =>{
     //Empty array
@@ -16,7 +17,7 @@ const generateEmail = (num) =>{
             //Check if emails address generated are 10
             if (genEmails.length === num){
                 //generating string
-                string = genEmails.map(email => `<li>${email}</li>`).join('');
+                string = genEmails.map(email => `<li class="list-group-item" >${email}</li>`).join('');
                 //inner.HTML the string
                 emailList.innerHTML = string
             }
