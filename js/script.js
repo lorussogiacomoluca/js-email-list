@@ -28,4 +28,20 @@ const generateEmail = (num) =>{
 //Invoke FUuntion
 generateEmail(10)
 
-button.addEventListener('click', () => generateEmail(10))
+//Show Toast
+button.addEventListener('click', () => {
+    generateEmail(10);
+    
+    //Sweet Alert
+    Swal.fire({
+        title: "Completato!",
+        text: "Ecco 10 nuovi indirizzi email!",
+        icon: "success",
+        timer: 2000,
+        showConfirmButton: false,
+        position: "center"
+    });
+})
+
+
+
