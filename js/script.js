@@ -23,3 +23,6 @@ const generateEmail = (num) =>{
         })
     }
 }
+
+//Invoke FUuntion
+generateEmail(10)
