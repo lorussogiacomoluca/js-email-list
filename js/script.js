@@ -1,6 +1,6 @@
 //Recupero elementi dal DOM
 const emailList = document.getElementById('email-list')
-
+const button = document.getElementById('button')
 
 //Generate email address Function
 const generateEmail = (num) =>{
@@ -27,3 +27,5 @@ const generateEmail = (num) =>{
 
 //Invoke FUuntion
 generateEmail(10)
+
+button.addEventListener('click', () => generateEmail(10))
