@@ -2,28 +2,42 @@
 const emailList = document.getElementById('email-list')
 const button = document.getElementById('button')
 
-//Generate email address Function
-const generateEmail = (num) =>{
-    //Empty array
-    let genEmails = []
-    //Empty string
-    let string = ''
-    //FOR Loop
-    for(let i = 0; i < num; i++){
-        //AJAX Request
-        axios.get('https://flynn.boolean.careers/exercises/api/random/mail').then((resp) =>{
-            //Pushing email address in array
-            genEmails.push(resp.data.response)
-            //Check if emails address generated are 10
-            if (genEmails.length === num){
-                //generating string
-                string = genEmails.map(email => `<li class="list-group-item" >${email}</li>`).join('');
-                //inner.HTML the string
-                emailList.innerHTML = string
-            }
-        })
-    }
+// //Generate email address Function
+// const generateEmail = (num) =>{
+//     //Empty array
+//     let genEmails = []
+//     //Empty string
+//     let string = ''
+//     //FOR Loop
+//     for(let i = 0; i < num; i++){
+//         //AJAX Request
+//         axios.get('https://flynn.boolean.careers/exercises/api/random/mail').then((resp) =>{
+//             //Pushing email address in array
+//             genEmails.push(resp.data.response)
+//             //Check if emails address generated are 10
+//             if (genEmails.length === num){
+//                 //generating string
+//                 string = genEmails.map(email => `<li class="list-group-item" >${email}</li>`).join('');
+//                 //inner.HTML the string
+//                 emailList.innerHTML = string
+//             }
+//         })
+//     }
+// }
+
+// recuperiamo gli elementi del dom che ci servono
+const list = document.getElementById('email-list');
+
+// dichiarazione delle variabili che ci servono
+const endpoint = 'https://flynn.boolean.careers/exercises/api/random/mail';
+
+for(let i=0; i<10; i++){
+    axios.get(endpoint).then((res) => {
+        let li = `<li class="list-group-item">${res.data.response}</li>`
+        list.innerHTML += li
+    })
 }
+
 
 //Invoke FUuntion
 generateEmail(10)
