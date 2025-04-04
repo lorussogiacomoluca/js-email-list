@@ -1,9 +1,12 @@
 //Recupero elementi dal DOM
-const emailList = document.getElementById('email-list')
+const list = document.getElementById('email-list')
 const button = document.getElementById('button')
 
-// //Generate email address Function
-// const generateEmail = (num) =>{
+// dichiarazione delle variabili che ci servono
+const endpoint = 'https://flynn.boolean.careers/exercises/api/random/mail';
+
+//Generate email address Function
+const generateEmail = (domList) =>{
 //     //Empty array
 //     let genEmails = []
 //     //Empty string
@@ -23,28 +26,21 @@ const button = document.getElementById('button')
 //             }
 //         })
 //     }
-// }
-
-// recuperiamo gli elementi del dom che ci servono
-const list = document.getElementById('email-list');
-
-// dichiarazione delle variabili che ci servono
-const endpoint = 'https://flynn.boolean.careers/exercises/api/random/mail';
-
-for(let i=0; i<10; i++){
-    axios.get(endpoint).then((res) => {
-        let li = `<li class="list-group-item">${res.data.response}</li>`
-        list.innerHTML += li
-    })
+    domList.innerHTML = ''
+    for(let i=0; i<10; i++){
+        axios.get(endpoint).then((res) => {
+            let li = `<li class="list-group-item">${res.data.response}</li>`
+            domList.innerHTML += li
+        })
+    }
 }
 
-
 //Invoke FUuntion
-generateEmail(10)
+generateEmail(list)
 
 //Show Toast
 button.addEventListener('click', () => {
-    generateEmail(10);
+    generateEmail(list);
     
     //Sweet Alert
     Swal.fire({
